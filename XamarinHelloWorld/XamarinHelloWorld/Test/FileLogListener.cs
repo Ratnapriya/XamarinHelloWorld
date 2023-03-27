@@ -1,4 +1,4 @@
-﻿using Abbott.Services.Platform.Common.ServiceLocator;
+using Abbott.Services.Platform.Common.ServiceLocator;
 using Abbott.Services.Platform.File;
 using Abbott.Services.Platform.Logging;
 using System.Collections.Concurrent;
@@ -20,22 +20,6 @@ namespace PatientApp.Logging
         BlockingCollection<LogEntry> persistanceQueue = new BlockingCollection<LogEntry>(new ConcurrentQueue<LogEntry>());
 
         object locker = new object();
-
-        #region Constructors
-
-        public FileLogListener()
-        {
-            flushThread = new Thread(new ThreadStart(FlushLogsToFile));
-            flushThread.Start();
-        }
-
-        #endregion
-        #region Overrides
-
-        public override void Write(LogEntry logEntry)
-        {
-            persistanceQueue.Add(logEntry);
-        }
 
         #endregion
         #region Public Methods
