@@ -27,10 +27,7 @@ namespace PatientApp.Droid.BroadcastReceivers
 
                 if (bondState == (int) Bond.None)
                 {
-                    Log.Verify(LogEnum.A0051);
-
-                    var eventService = Abbott.Services.Platform.Common.ServiceLocator.ServiceUtil.Get<IEvent>();
-                    eventService.Publish<BondLostEvent, ResultCode>(Cloud.IoTHubMessages.ResultCode.OsBondLost);
+                    
                 }
             }
 #endif
